@@ -1,0 +1,12 @@
+const express = require('express');
+const cors = require('cors');
+const app = express();
+const db = require("./db");
+app.use(express.json());
+app.use(cors());
+app.get('/api/expenses', db.getExpenses);
+app.get('/api/expenses/:id', db.getExpensesById);
+app.post('/api/expenses', db.createExpenses);
+app.put('/api/expenses/:id', db.updateExpenses);
+app.delete('/api/expenses/:id', db.deleteExpenses);
+app.listen(3000, () => { console.log("Example app " + 3000); });
